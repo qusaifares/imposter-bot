@@ -4,6 +4,7 @@ import { config } from 'dotenv'
 import { MongoClient } from 'mongodb'
 // @ts-ignore
 import MongoDBProvider from 'commando-provider-mongo'
+import mongooseConnection from './db/mongooseConnection'
 
 config()
 
@@ -33,7 +34,10 @@ client.on('ready', async () => {
     )
     .catch(console.error);
 
+    await mongooseConnection(DB_URL as string);
+
     client.registry
+    .registerDefaultTypes()
     .registerGroups([
       ['misc', 'misc commands'],
       ['moderation', 'moderation commands'],

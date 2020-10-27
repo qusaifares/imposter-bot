@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "commando-provider-mongo": "git+https://github.com/paulhobbel/commando-provider-mongo.git",
+    "discord.js": "^12.4.1",
     "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.2",
