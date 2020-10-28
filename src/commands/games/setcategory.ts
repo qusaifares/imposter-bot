@@ -1,4 +1,3 @@
-import { CategoryChannel } from 'discord.js'
 import { CommandoClient, Command, CommandoMessage } from 'discord.js-commando'
 import Guild from '../../db/models/Guild'
 
