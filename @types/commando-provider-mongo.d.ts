@@ -1,5 +1,5 @@
 import { CommandoClient, SettingProvider } from 'discord.js-commando'
-import {MongoClient} from 'mongodb'
+import { MongoClient } from 'mongodb'
 
 declare module 'commando-provider-mongo' {
 
