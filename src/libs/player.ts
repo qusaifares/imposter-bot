@@ -1,9 +1,10 @@
-import { Client, GuildMember, VoiceChannel } from 'discord.js'
+import { Client, User, VoiceChannel } from 'discord.js'
 import { CommandoClient } from 'discord.js-commando';
 import { Color } from './amongUs';
 
 export default class Player {
-    constructor(public client: Client | CommandoClient, public gameChannel: VoiceChannel, public member: GuildMember, public color: Color) {}
+    constructor(public client: Client | CommandoClient, public gameChannel: VoiceChannel, public user: User, public color: Color) {}
+    public id = this.user.id
     public isAlive = true
 
     public die() {
@@ -15,10 +16,10 @@ export default class Player {
     }
     
     public mute() {
-        this.gameChannel.createOverwrite(this.member, {SPEAK: false})
+        this.gameChannel.createOverwrite(this.user, {SPEAK: false})
     }
     
     public unmute() {
-        this.gameChannel.createOverwrite(this.member, {SPEAK: true})
+        this.gameChannel.createOverwrite(this.user, {SPEAK: true})
     }
 }

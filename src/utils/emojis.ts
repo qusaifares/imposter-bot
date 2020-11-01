@@ -1,4 +1,5 @@
-import { Color } from "libs/amongUs";
+import { Emoji } from "discord.js";
+import { Color } from "../libs/amongUs";
 
 interface EmojiInfo {
     color: Color,
@@ -20,4 +21,16 @@ export const emojisInfo: EmojiInfo[] = [
     { color: 'black', id: '770750869846097960' }
 ]
 
-export const emojiString = ({color, id}: EmojiInfo) => `<:${color}:${id}>`
+const isEmojiInfo = (emoji: EmojiInfo | Color): emoji is EmojiInfo => {
+    return typeof emoji !== 'string';
+}
+
+export const emojiString = (info: EmojiInfo | Color) => {
+    let emoji: EmojiInfo;
+    if (isEmojiInfo(info)) {
+        emoji = info;
+    } else {
+        emoji = emojisInfo.find(e => e.color === info || e.id === info) as EmojiInfo
+    }
+    return `<:${emoji.color}:${emoji.id}>`
+}

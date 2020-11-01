@@ -49,4 +49,4 @@ client.on('ready', async () => {
   })
 })
 
-client.login(TOKEN)
+client.login(TOKEN).then(() => console.log(`Logged into ${client.user?.tag}`))
